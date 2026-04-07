@@ -98,7 +98,7 @@ if st.session_state.page == 'simulador':
                 if conf_mac_of < 75 or conf_det_of < 65:
                     st.warning("⚠️ Status: Baixa confiança detectada no roteamento.")
                 else:
-                    st.write("🟢 Status: Triagem Recomendada.")
+                    st.write("🟢 Status: Triagem Automatizada.")
 
             with col_ov:
                 st.subheader("⚠️ Modelo Overfit")
@@ -108,7 +108,7 @@ if st.session_state.page == 'simulador':
                 if conf_mac_ov < 75 or conf_det_ov < 65:
                     st.warning("⚠️ Status: Baixa confiança detectada no roteamento.")
                 else:
-                    st.write("🟢 Status: Triagem Recomendada.")
+                    st.write("🟢 Status: Triagem Automatizada.")
 
             # log --> Dados para o testing.csv
             novo_log = {
