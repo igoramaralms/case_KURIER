@@ -34,7 +34,7 @@ O projeto foi construído sob uma ótica MLOps, priorizando não apenas a acurá
 `03_modeling.ipynb`
 - **Treinamento Frequencial:** Estratégia de negócio onde o modelo aprende com os "pesos" da frequência real mas é rigidamente provado numa base ortogonal cega (Teste 100% deduplicado e inédito).
 - **Disputa de Algoritmos:** Avaliação de SVM, Logistic Regression, Naive Bayes e Random Forest. 
-- **Melhor Modelo:** `LinearSVC` associado ao `TF-IDF`. Por atuar sobre jargões técnicos corporativos ("boleto", "senha", "estorno"), a lógica esparsa de vetores foi superior à redes densas para o escopo.
+- Escolha do melhor modelo.
 
 ### 4. Aplicação e Observabilidade
 `app.py`
