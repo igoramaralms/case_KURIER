@@ -178,9 +178,7 @@ elif st.session_state.page == 'dashboard':
         with col3:
             st.metric(
                 "Oficial X Overfit", 
-                f"-{gap_realismo:.1f}%", 
-                delta="Falsa Certeza Removida", 
-                delta_color="normal", 
+                f"-{gap_realismo:.1f}%",  
                 help="O quanto o modelo oficial é mais cauteloso que o overfit."
             )
         
