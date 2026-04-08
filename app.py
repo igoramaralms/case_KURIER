@@ -178,7 +178,7 @@ elif st.session_state.page == 'dashboard':
         
         st.divider()
 
-        
+
         r4_col1, r4_col2 = st.columns(2)
 
         # Cálculo das Médias
@@ -258,7 +258,7 @@ elif st.session_state.page == 'dashboard':
             st.plotly_chart(fig5, use_container_width=True)
 
         with r3_col2:
-            st.subheader("6. Anomalia do Overfit Linear")
+            st.subheader("6. Confiança Oficial x Confiança Overfit")
             fig6 = px.scatter(df, x='oficial_macro_conf', y='overfit_macro_conf', 
                               labels={'oficial_macro_conf': 'Confiança Oficial (%)', 'overfit_macro_conf': 'Confiança Overfit (%)'},
                               opacity=0.7)
