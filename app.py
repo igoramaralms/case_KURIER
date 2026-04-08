@@ -28,8 +28,7 @@ def load_resources():
     try:
         nlp = spacy.load('pt_core_news_md', disable=['ner', 'parser'])
     except OSError:
-        spacy.cli.download('pt_core_news_md')
-        nlp = spacy.load('pt_core_news_md', disable=['ner', 'parser'])
+        nlp = spacy.load('pt_core_news_md-3.8.0', disable=['ner', 'parser'])
     
     # Carregando Modelos .joblib
     m_macro_of = joblib.load('models/macro_oficial.joblib')
