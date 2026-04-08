@@ -69,7 +69,8 @@ if st.session_state.page == 'simulador':
             
             # 2. MODO OFICIAL 
             # Macro
-            prob_mac_of = m_macro_of.predict_proba([texto_processado])[0]
+            vetor_entrada = doc.vector.reshape(1, -1)
+            prob_mac_of = m_macro_of.predict_proba(vetor_entrada)[0]
             cat_mac_of = m_macro_of.classes_[np.argmax(prob_mac_of)]
             conf_mac_of = max(prob_mac_of) * 100
             # Detalhado
