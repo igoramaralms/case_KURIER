@@ -26,10 +26,10 @@ if 'page' not in st.session_state:
 @st.cache_resource
 def load_resources():
     try:
-        nlp = spacy.load('pt_core_news_sm', disable=['ner', 'parser'])
+        nlp = spacy.load('pt_core_news_md', disable=['ner', 'parser'])
     except OSError:
-        spacy.cli.download('pt_core_news_sm')
-        nlp = spacy.load('pt_core_news_sm', disable=['ner', 'parser'])
+        spacy.cli.download('pt_core_news_md')
+        nlp = spacy.load('pt_core_news_md', disable=['ner', 'parser'])
     
     # Carregando Modelos .joblib
     m_macro_of = joblib.load('models/macro_oficial.joblib')
@@ -96,7 +96,7 @@ if st.session_state.page == 'simulador':
                 st.info(f"**MACRO:** {cat_mac_of} ({conf_mac_of:.1f}%)")
                 st.success(f"**DETALHADO:** {cat_det_of} ({conf_det_of:.1f}%)")
                 
-                if conf_mac_of < 75 or conf_det_of < 65:
+                if conf_mac_of < 70 or conf_det_of < 60:
                     st.warning("⚠️ Status: Baixa confiança detectada no roteamento.")
                 else:
                     st.write("🟢 Status: Triagem Automatizada.")
@@ -106,7 +106,7 @@ if st.session_state.page == 'simulador':
                 st.info(f"**MACRO:** {cat_mac_ov} ({conf_mac_ov:.1f}%)")
                 st.error(f"**DETALHADO:** {cat_det_ov} ({conf_det_ov:.1f}%)")
 
-                if conf_mac_ov < 75 or conf_det_ov < 65:
+                if conf_mac_ov < 70 or conf_det_ov < 60:
                     st.warning("⚠️ Status: Baixa confiança detectada no roteamento.")
                 else:
                     st.write("🟢 Status: Triagem Automatizada.")
@@ -166,7 +166,7 @@ elif st.session_state.page == 'dashboard':
         media_of = df['oficial_macro_conf'].mean()
         gap_realismo = media_ov - media_of
 
-        col1, col2, col3 = st.columns(3)
+        col1, col2 = st.columns(2)
         col1.metric("Volume de Interações", f"{total}")
 
         with col2:
@@ -174,13 +174,6 @@ elif st.session_state.page == 'dashboard':
                 "Triagem 100% Autônoma (oficial)", 
                 f"{taxa_automacao:.1f}%", 
                 help="Chamados que poderiam ser encaminhados para o setor / agente."
-            )
-
-        with col3:
-            st.metric(
-                "Oficial X Overfit", 
-                f"-{gap_realismo:.1f}%",  
-                help="O quanto o modelo oficial é mais cauteloso que o overfit."
             )
         
         st.divider()
