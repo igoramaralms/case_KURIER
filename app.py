@@ -178,7 +178,40 @@ elif st.session_state.page == 'dashboard':
         
         st.divider()
 
+        
+        r4_col1, r4_col2 = st.columns(2)
 
+        # Cálculo das Médias
+        avg_macro_of = df['oficial_macro_conf'].mean()
+        avg_macro_ov = df['overfit_macro_conf'].mean()
+        avg_det_of = df['oficial_det_conf'].mean()
+        avg_det_ov = df['overfit_det_conf'].mean()
+
+        with r4_col1:
+            st.markdown("#### Média de Confiança: MACRO")
+            df_macro_avg = pd.DataFrame({
+                'Modelo': ['Oficial', 'Overfit'],
+                'Confiança Média (%)': [avg_macro_of, avg_macro_ov]
+            })
+            fig7 = px.bar(df_macro_avg, x='Modelo', y='Confiança Média (%)', 
+                          color='Modelo', text_auto='.1f',
+                          color_discrete_map={'Oficial': 'blue', 'Overfit': 'red'},
+                          range_y=[0, 105])
+            st.plotly_chart(fig7, use_container_width=True)
+
+        with r4_col2:
+            st.markdown("#### Média de Confiança: DETALHADA")
+            df_det_avg = pd.DataFrame({
+                'Modelo': ['Oficial', 'Overfit'],
+                'Confiança Média (%)': [avg_det_of, avg_det_ov]
+            })
+            fig8 = px.bar(df_det_avg, x='Modelo', y='Confiança Média (%)', 
+                          color='Modelo', text_auto='.1f',
+                          color_discrete_map={'Oficial': 'dodgerblue', 'Overfit': 'crimson'},
+                          range_y=[0, 105])
+            st.plotly_chart(fig8, use_container_width=True)
+
+        st.divider()
 
         #GRÁFICOS ANALÍTICOS
 

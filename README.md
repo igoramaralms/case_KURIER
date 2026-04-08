@@ -40,7 +40,7 @@ O projeto foi construído sob uma ótica MLOps, priorizando não apenas a acurá
 `app.py`
 - **Single Page Application (SPA):** Navegação em sessão fluida entre o ambiente de simulação e o Dashboard analítico.
 - **Simulador Interativo:** Testes de predições na prática provando a dupla validação (O ticket só recebe *Triagem Recomendada* se confiança > 70% e > 60%).
-- **Dashboard de Insights:** Módulo rodando com `Plotly` exibindo KPIs táticos (Taxa Analítica Autônoma vs Divergência), Scatter e Boxplots exibindo graficamente os insights.
+- **Dashboard de Insights:** Módulo rodando com `Plotly` exibindo KPIs táticos , Scatter e Boxplots exibindo graficamente os insights.
 
 ---
 
